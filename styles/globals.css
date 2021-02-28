@@ -14,3 +14,15 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.blue {
+  border: 2px solid blue;
+}
+
+.green {
+  border: 2px solid green;
+}

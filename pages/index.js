@@ -1,65 +1,87 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, { useState } from "react";
+import Head from "next/head";
+import App from "../components/App";
+import SubtitleWithLine from "../components/SubtitleWithLine";
+
+import { Box, Text, Heading, Button, Flex, Icon } from "@chakra-ui/react";
+
+import offers from "../db/offers.json";
+import Container from "../components/Container";
+import OfferItem from "../components/OfferItem";
+import Proformance from "../components/Proformance";
+import CircleProgressBar from "../components/CricleProgressBar";
+import Supports from "../components/Supports";
 
 export default function Home() {
+  const [activeOfferItem, setActiveOfferItem] = useState([false, false, false]);
+
+  const activeOffer = (target) => {
+    const result = activeOfferItem.map((_, i) => {
+      if (target === i) return true;
+      return false;
+    });
+    setActiveOfferItem(result);
+  };
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <App>
+      <Heading as='h1' position='absolute' top='-200px' left={0}>
+        Resume growthOps
+      </Heading>
+      <Box textAlign='center'>
+        <SubtitleWithLine>
+          <Text as='h2'>
+            what we{" "}
+            <Text as='span' color='teal.500'>
+              offer
+            </Text>
+          </Text>
+        </SubtitleWithLine>
+        <Text fontSize='0.7em'>
+          We offer our customers the best services & solutions, this is our main
+          services list
+        </Text>
+      </Box>
+      <Container>
+        <Flex flexDirection={{ sm: "column", md: "row" }}>
+          {offers.map(({ title, content }, i) => (
+            <OfferItem
+              key={i}
+              title={title}
+              content={content}
+              onClick={activeOffer}
+              activeOfferItem={activeOfferItem}
+              target={i}
+            />
+          ))}
+        </Flex>
+      </Container>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Proformance>
+        <Box
+          d='flex'
+          width='100%'
+          justifyContent='space-around'
+          flexWrap='wrap'
+          flexDir={{ sm: "row", md: "row" }}>
+          <CircleProgressBar percentage={75} title={"web design"} />
+          <CircleProgressBar percentage={92} title={"web development"} />
+          <CircleProgressBar percentage={68} title={"speed optimazation"} />
+          <CircleProgressBar percentage={100} title={"customer support"} />
+          <CircleProgressBar percentage={83} title={"marketing"} />
+          <CircleProgressBar percentage={50} title={"advertisement"} />
+        </Box>
+      </Proformance>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      <Container>
+        <Box
+          d='flex'
+          flexDir={{ sm: "column", md: "row" }}
+          flexWrap='wrap'
+          py={10}>
+          <Supports />
+        </Box>
+      </Container>
+    </App>
+  );
 }
