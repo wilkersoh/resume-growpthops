@@ -15,17 +15,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-const paths = {
-  home: "/home",
-  portfolio: "/portfolio",
-  blog: "/blog",
-  pages: "/pages",
-  features: "/features",
-  mega_menu: "/mega-menu",
-  contact: "/contact",
-};
-
-export default function MobileNav() {
+export default function MobileNav({ paths }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const onClosePanel = () => onClose();

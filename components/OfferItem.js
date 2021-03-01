@@ -19,7 +19,7 @@ export default function OfferItem({
 }) {
   return (
     <Container>
-      <Box textAlign='center' py={4}>
+      <Box textAlign='center' py={4} mx='auto'>
         <Box
           mb={3}
           h={{ sm: 20, md: 32 }}

@@ -14,13 +14,7 @@ export default function Supports() {
   return (
     <>
       {details.map(({ title, subtitle, body, icon }, i) => (
-        <Box
-          key={title}
-          d='flex'
-          flexDir={{ sm: "column", md: "row" }}
-          w={{ md: "33%" }}
-          key={title}
-          mb={4}>
+        <Box key={title} d='flex' w={{ md: "33%" }} key={title} mb={4}>
           <Box d='inline-block' mb={2} mr={3}>
             <Box bgColor={i === 1 ? "teal" : "gray.0"}>
               <Box px={2}>
@@ -49,10 +43,14 @@ export default function Supports() {
           </Box>
           <Box d='flex' flexDir='column'>
             <Box mb={1}>
-              <Text className='h3' as='h3' fontWeight='600'>
+              <Text
+                className='h3'
+                as='h3'
+                fontWeight='600'
+                textTransform='uppercase'>
                 {title}
               </Text>
-              <Text lineHeight='1' color='gray.500'>
+              <Text lineHeight='1' color='gray.500' textTransform='capitalize'>
                 {subtitle}
               </Text>
             </Box>
