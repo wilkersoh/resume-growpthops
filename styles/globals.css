@@ -19,6 +19,15 @@ a {
   text-transform: uppercase;
 }
 
+/* .alice-carousel__prev-btn
+.alice-carousel__prev-btn-item */
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  text-align: left;
+  width: auto !important;
+}
+/* .alice-carousel__next-btn-item */
+
 .blue {
   border: 2px solid blue;
 }

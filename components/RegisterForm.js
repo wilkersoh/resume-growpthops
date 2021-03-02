@@ -14,9 +14,6 @@ export default function RegisterForm() {
 
   const handleInputChange = (e) => {
     const name = e.target.name;
-    // setInputValue(prev => {
-    //   if(!inputValue[name])
-    // })
 
     console.log("e :>> ", e.target.value);
   };
@@ -25,10 +22,10 @@ export default function RegisterForm() {
     e.preventDefault();
     console.log(e);
   };
-  console.log("inputValue :>> ", inputValue);
+
   return (
     <Container>
-      <Box w='full'>
+      <Box w='full' mb={8}>
         <Heading my={3} textTransform='uppercase' color='teal.0'>
           register your interest
         </Heading>

@@ -14,6 +14,7 @@ import { Box, Text, Heading, Flex } from "@chakra-ui/react";
 
 import offers from "../db/offers.json";
 import Slider from "../components/Slider";
+import ImageComponent from "../components/SlideImage";
 
 export default function Home() {
   const [activeOfferItem, setActiveOfferItem] = useState([false, false, false]);
@@ -90,6 +91,10 @@ export default function Home() {
 
       <Box mt={4} bgColor='teal.0' h={"300px"}>
         <Slider />
+      </Box>
+
+      <Box bgColor='gray.0' minH={"250px"}>
+        <ImageComponent />
       </Box>
     </App>
   );

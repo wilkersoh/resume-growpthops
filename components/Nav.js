@@ -37,8 +37,9 @@ export default function Nav() {
       <Container>
         <Box w='full'>
           <Box d='flex' justifyContent='space-between' alignItems='center'>
-            {/* <Image src={} width={40} height={40} /> */}
-            <Box className='blue' width='40px' h='40px'></Box>
+            <Box>
+              <Image src={"/images/stamp.jpg"} width={40} height={40} />
+            </Box>
             <MobileNav paths={paths} />
 
             <List d={{ sm: "none", md: "flex" }}>
