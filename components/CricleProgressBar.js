@@ -1,13 +1,12 @@
 import React from "react";
 
-import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Box, Text } from "@chakra-ui/react";
 
 export default function CircleProgressBar({ percentage, title }) {
   return (
-    <Box maxW={{ sm: 28, md: 40 }} mx={4} py={4}>
+    <Box maxW={{ sm: 28, md: 40 }} mx={4} py={4} transition='10s'>
       <CircularProgressbar
         value={percentage}
         text={`${percentage}%`}

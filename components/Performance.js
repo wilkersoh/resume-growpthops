@@ -1,11 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import SubtitleWithLine from "./SubtitleWithLine";
 import Container from "./Container";
 
 import { LinkIcon } from "@chakra-ui/icons";
 import { Box, Stack, Text, Icon } from "@chakra-ui/react";
 
-export default function Performance({ children }) {
+const Performance = ({ children }) => {
   return (
     <Box minH={"200px"} py={6} bgColor='gray.0' position='relative'>
       <Box
@@ -39,4 +39,6 @@ export default function Performance({ children }) {
       </Container>
     </Box>
   );
-}
+};
+
+export default Performance;

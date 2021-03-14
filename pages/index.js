@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Head from "next/head";
+import React, { useState, useLayoutEffect, useRef } from "react";
 import App from "../components/App";
 import SubtitleWithLine from "../components/SubtitleWithLine";
 import Container from "../components/Container";
@@ -18,6 +17,37 @@ import ImageComponent from "../components/SlideImage";
 
 export default function Home() {
   const [activeOfferItem, setActiveOfferItem] = useState([false, false, false]);
+  const [isAniamte, setAnimate] = useState(false);
+  const [performancePercentage, setPerformancePercentage] = useState({
+    75: "web design",
+    92: "web development",
+    68: "speed optimazation",
+    100: "customer support",
+    83: "marketing",
+    50: "advertisement",
+  });
+
+  const [count, setCount] = useState(0);
+
+  const performanceRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const topPos = (element) => element.getBoundingClientRect().top;
+    const performanceBox = topPos(performanceRef.current);
+
+    const onScroll = () => {
+      if (isAniamte) return;
+      const scrollPos = window.scrollY + window.innerHeight;
+
+      if (performanceBox + 60 < scrollPos) {
+        // Update animation
+        setAnimate(true);
+      }
+      console.log("listen scrolling");
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const activeOffer = (target) => {
     const result = activeOfferItem.map((_, i) => {
@@ -25,6 +55,11 @@ export default function Home() {
       return false;
     });
     setActiveOfferItem(result);
+  };
+
+  const updateAnimation = (number) => {
+    // const timer = setInterval(() => setCount(count + 1), 50);
+    // if (timer === number) return clearInterval(timer);
   };
 
   return (
@@ -69,13 +104,15 @@ export default function Home() {
           width='100%'
           justifyContent='space-around'
           flexWrap='wrap'
+          ref={performanceRef}
           flexDir={{ sm: "row", md: "row" }}>
-          <CircleProgressBar percentage={75} title={"web design"} />
-          <CircleProgressBar percentage={92} title={"web development"} />
-          <CircleProgressBar percentage={68} title={"speed optimazation"} />
-          <CircleProgressBar percentage={100} title={"customer support"} />
-          <CircleProgressBar percentage={83} title={"marketing"} />
-          <CircleProgressBar percentage={50} title={"advertisement"} />
+          {Object.entries(performancePercentage).map(([percetage, title]) => (
+            <CircleProgressBar
+              // percentage={isAniamte ? updateAnimation(percetage) : 0}
+              percentage={isAniamte ? percetage : 0}
+              title={title}
+            />
+          ))}
         </Box>
       </Performance>
 

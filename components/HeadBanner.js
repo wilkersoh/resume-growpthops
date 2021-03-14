@@ -18,7 +18,10 @@ export default function HeadBanner() {
       w='full'>
       <Image src='/images/banner.jpg' layout='fill' objectFit='cover' />
       <Container zIndex={1}>
-        <Box d='flex' justifyContent={{ sm: "center", md: "start" }}>
+        <Box
+          d='flex'
+          justifyContent={{ sm: "center", md: "start" }}
+          m={{ md: "auto" }}>
           <Box textAlign='center' w={{ sm: "230px", md: "345px" }}>
             <Box>
               <Text lineHeight='1' fontSize='0.75em' className='uppercase'>

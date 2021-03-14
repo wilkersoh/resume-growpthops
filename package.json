@@ -17,7 +17,6 @@
     "react": "17.0.1",
     "react-alice-carousel": "^2.4.0",
     "react-circular-progressbar": "^2.0.3",
-    "react-dom": "17.0.1",
-    "react-transition-group": "^4.4.1"
+    "react-dom": "17.0.1"
   }
 }
